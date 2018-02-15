@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>首页</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-slides pager=true autoplay="2000" loop="true" *ngIf="len>=1" autoplayDisableOnInteration="true">
+        <ion-slide *ngFor="let item of slides" (click)="goDetails(item)">
+            <img src="{{item.PictUrl}}" alt="">
+          <div class="cover"></div>
+          <span class="title">{{item.Title}}</span>
+        </ion-slide>
+    </ion-slides>
+
+    <div class="categories">
+      <ion-grid>
+        <ion-row wrap>
+          <ion-col text-center tappable col-3 *ngFor="let c of categories" (click)="goProductList(c)">
+            <!-- <i class="iconfont {{c.Icon}} icon"></i> -->
+            <ion-icon ios="ios-shirt" md="md-shirt" class="icon"></ion-icon>
+            <span class="title">{{c.FavoritesTitle}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <ion-item-divider class="t-header" color="light"> 2018年新款推荐 </ion-item-divider>
+    <products [products]="products"></products>
+</ion-content>
